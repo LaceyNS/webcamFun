@@ -21,7 +21,6 @@ function getVideo() {
 function paintToCanvas() {
     const width = video.videoWidth;
     const height = video.videoHeight;
-    console.log(width, height);
     canvas.width = width;
     canvas.height = height;
 
@@ -30,4 +29,21 @@ function paintToCanvas() {
     }, 16);
 }
 
+function takePhoto() {
+    // Play the sound
+    snap.currentTime = 0;
+    snap.play();
+
+    // Get the data from canvas
+    const data = canvas.toDataURL('image/jpeg');
+    const link = document.createElement('a');
+    link.href = data;
+    link.setAttribute('download', 'handsome');
+    link.textContent = 'Download Image';
+    // This is how to do jQuery prepend in vanilla JS
+    strip.insertBefore(link, strip.firstChild);
+}
+
 getVideo();
+
+video.addEventListener('canplay', paintToCanvas);
