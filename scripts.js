@@ -38,8 +38,8 @@ function takePhoto() {
     const data = canvas.toDataURL('image/jpeg');
     const link = document.createElement('a');
     link.href = data;
-    link.setAttribute('download', 'handsome');
-    link.textContent = 'Download Image';
+    link.setAttribute('download', 'tired');
+    link.innerHTML = `<img src="${data}" alt="Tired Developer" />`;
     // This is how to do jQuery prepend in vanilla JS
     strip.insertBefore(link, strip.firstChild);
 }
